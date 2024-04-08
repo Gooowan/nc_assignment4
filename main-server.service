@@ -1,0 +1,11 @@
+[Unit]
+Description=Main Server
+After=network.target
+
+[Service]
+ExecStart=/home/ubuntu/nc_assignment4/serverExecutable
+User=nobody
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
