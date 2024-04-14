@@ -41,7 +41,7 @@ def main(server_ip, server_port):
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
-        print("Usage: python client.py <Server IP> <Server Port>")
+        print("Usage: ./client.py <Server IP> <Server Port>")
         sys.exit()
     
     server_ip = sys.argv[1]
