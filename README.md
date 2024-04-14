@@ -13,7 +13,7 @@ g++ --version
 # 3. build all needed files
 g++ -std=c++11 -pthread /home/ubuntu/nc_assignment4/main.cpp /home/ubuntu/nc_assignment4/SafeFile.cpp -o /home/ubuntu/nc_assignment4/serverExecutable
 chmod +x /home/ubuntu/nc_assignment4/serverExecutable
-chmod +x /home/ubuntu/nc_assignment4/client.sh
+chmod +x /home/ubuntu/nc_assignment4/client.py
 
 # 3. move .service to /etc/systemd/system
 sudo mv /home/ubuntu/nc_assignment4/main-server.service /etc/systemd/system/main-server.service
