@@ -66,6 +66,7 @@ private:
         sendText("Wait", clientSocket);
         this_thread::sleep_for(chrono::seconds(1));
         sendText("Ready", clientSocket);
+        receivedText = receiveText(clientSocket);
         logFile.write(receivedText);
         sendText("OK", clientSocket);
         close(clientSocket);
@@ -81,6 +82,7 @@ private:
     string receiveText(int clientSocket) {
         int textLength;
         recv(clientSocket, &textLength, sizeof(int), 0);
+        textLength = ntohl(textLength); 
         vector<char> buffer(textLength);
         recv(clientSocket, buffer.data(), textLength, 0);
         return string(buffer.begin(), buffer.end());

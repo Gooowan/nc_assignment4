@@ -4,10 +4,10 @@ import socket
 import sys
 
 def send_text(sock, text):
-    text_encoded = text.encode('utf-8')
-    text_size = len(text_encoded)
-    sock.sendall(text_size.to_bytes(4, byteorder='big'))
-    sock.sendall(text_encoded)
+    text_encoded = text.encode()
+    total_size = len(text_encoded)
+    sock.send(total_size.to_bytes(4, byteorder='big'))
+    sock.send(text_encoded)
 
 def receive_text(sock):
     size_data = sock.recv(4)

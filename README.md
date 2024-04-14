@@ -3,8 +3,8 @@ multipass launch 22.04 --name=nc-ass4
 multipass shell nc-ass4
 
 # 2. install compiler for C
-sudo apt-get install -y gcc g++
-git clone 
+sudo apt-get install -y gcc g++ python3
+git clone https://github.com/Gooowan/nc_assignment4
 
 # 2.1. check if installed
 gcc --version
@@ -15,7 +15,7 @@ g++ -std=c++11 -pthread /home/ubuntu/nc_assignment4/main.cpp /home/ubuntu/nc_ass
 chmod +x /home/ubuntu/nc_assignment4/serverExecutable
 chmod +x /home/ubuntu/nc_assignment4/client.py
 
-# 3. move .service to /etc/systemd/system
+# 3.1. move .service to /etc/systemd/system
 sudo mv /home/ubuntu/nc_assignment4/main-server.service /etc/systemd/system/main-server.service
 
 # 4. start .service
