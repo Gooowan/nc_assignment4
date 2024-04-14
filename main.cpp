@@ -7,6 +7,9 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <unistd.h>
+#include <chrono>
+#include <ctime>
+#include <cstdlib>
 #include "SafeFile.hpp"
 
 using namespace std;
@@ -14,7 +17,7 @@ using namespace std;
 class Server {
 private:
     int serverSocket;
-    int port = 15000;
+    const int port = 15000;
     sockaddr_in serverAddress;
     SafeFile logFile;
     
@@ -67,6 +70,13 @@ private:
         this_thread::sleep_for(chrono::seconds(1));
         sendText("Ready", clientSocket);
         receivedText = receiveText(clientSocket);
+        
+        auto now = chrono::system_clock::now();
+        time_t now_c = chrono::system_clock::to_time_t(now);
+        string timestamp = ctime(&now_c);
+        timestamp.pop_back();  // Remove the newline character
+        receivedText = timestamp + " - " + receivedText;
+
         logFile.write(receivedText);
         sendText("OK", clientSocket);
         close(clientSocket);
@@ -109,7 +119,8 @@ public:
 };
 
 int main() {
-    Server server("/home/ubuntu/nc_assignment4/request.txt");
+    string logFilePath = getenv("LOG_FILE");
+    Server server(logFilePath);
     server.run();
     return 0;
 }

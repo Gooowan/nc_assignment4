@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # 1. Launch container and access it
-multipass launch 22.04 --name=nc-ass4
-multipass exec nc-ass4 -- bash -c 
+# multipass launch 22.04 --name=nc-ass4
+# multipass exec nc-ass4 -- bash -c 
 
 # 2. Install compilers and other necessary packages
 sudo apt-get update
@@ -10,10 +10,6 @@ sudo apt-get install -y gcc g++ python3
 
 # Clone the repository
 git clone https://github.com/Gooowan/nc_assignment4 /home/ubuntu/nc_assignment4
-
-# 2.1. Check if compilers are installed
-gcc --version
-g++ --version
 
 # 3. Build all needed files
 g++ -std=c++11 -pthread /home/ubuntu/nc_assignment4/main.cpp /home/ubuntu/nc_assignment4/SafeFile.cpp -o /home/ubuntu/nc_assignment4/serverExecutable

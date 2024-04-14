@@ -22,7 +22,7 @@ def main(server_ip, server_port):
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
         sock.connect((server_ip, server_port))
         
-        first_message = input("Enter your message: ")
+        first_message = input("Enter 'Hello' to connect: ")
         send_text(sock, first_message)
 
         response1 = receive_text(sock)
@@ -31,7 +31,7 @@ def main(server_ip, server_port):
         response2 = receive_text(sock)
         print("Received:", response2)
         
-        second_message = input("Enter your message: ")
+        second_message = input("Enter your message to write: ")
         send_text(sock, second_message)
         
         final_response = receive_text(sock)
