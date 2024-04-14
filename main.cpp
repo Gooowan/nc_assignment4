@@ -119,7 +119,13 @@ public:
 };
 
 int main() {
-    string logFilePath = getenv("LOG_FILE");
+    string logFilePath = "";
+    logFilePath = getenv("LOG_FILE");
+
+    if (logFilePath == "") {
+        logFilePath = "/home/ubuntu/request.txt";
+    }
+    
     Server server(logFilePath);
     server.run();
     return 0;

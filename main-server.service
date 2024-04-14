@@ -5,7 +5,6 @@ After=network.target
 [Service]
 ExecStart=/home/ubuntu/nc_assignment4/serverExecutable
 WorkingDirectory=/home/ubuntu/nc_assignment4
-Environment="LOG_FILE=request.txt"
 User=ubuntu
 Restart=on-failure
 
